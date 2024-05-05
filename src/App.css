@@ -27,9 +27,13 @@ header {
     margin: 0 108px;
 }
 
+header img.logo:hover {
+    cursor: pointer;
+}
+
 img.logo {
-    height: 240px;
-    margin-left: -80px;
+    height: 120px;
+    margin-top: 16px;
 }
 
 form#search {
@@ -96,10 +100,77 @@ footer ul {
 }
 
 footer div.copyright h2 {
-    margin-top: 24px;
     line-height: 0;
 }
 
-footer div img.logo {
-    margin: -48px -80px -88px;
+div.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(376px, auto));
+    justify-content: space-between;
+    grid-gap: 8px;
+    padding: 8px;
+}
+
+div.card {
+    width: min-content;
+    height: min-content;
+    padding: 8px;
+    transition: transform 0.25s ease-in-out;
+    background-color: #1a1a1a;
+}
+
+div.card:hover {
+    transform: scale(0.96) ;
+}
+
+div.card div.restaurant-img {
+    position: relative;
+}
+
+div.card div.restaurant-img img {
+    width: 360px;
+    height: 240px;
+    border-radius: 16px;
+}
+
+div.card div.restaurant-img h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+div.card div.main-text {
+    height: auto;
+    font-weight: bold;
+}
+
+div.card div.main-text p {
+    /*background-color: green;*/
+}
+
+div.card div.main-text span.meta-text {
+    text-transform: lowercase;
+}
+
+/*div.card div.sub-text::before {*/
+/*    display: block;*/
+/*    content: ' ';*/
+/*    background-color: yellow;*/
+/*}*/
+
+div.card div.sub-text {
+    height: auto;
+    text-transform: capitalize;
+    text-wrap: auto;
+}
+
+div.card div.sub-text p.cuisines {
+    /*background-color: green;*/
+}
+
+div.card div.sub-text p.restaurant-area {
+    /*background-color: green;*/
 }
