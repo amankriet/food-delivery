@@ -1,4 +1,4 @@
-export const restaurantsList = [
+export const restaurantsMockList = [
     {
         type: "restaurant",
         data: {
