@@ -20,7 +20,6 @@ function Header(props) {
 
     function handleSearchQuery(query) {
         return restaurants.filter(restaurant => {
-            console.log('query:', query, restaurant.data.name.toLowerCase().includes(query.toLowerCase()))
             if (restaurant.data.name.toLowerCase().includes(query.toLowerCase())) {
                 return true
             } else {
@@ -36,10 +35,12 @@ function Header(props) {
         }
         onSearch(queryResults)
     }
-
-    useEffect(() => {
-        onSearch(queryResults)
-    }, [queryResults]);
+    // Quick search not required. Query List dropdown seems a better UX approach
+    // useEffect(() => {
+    //     if (queryResults.length > 0) {
+    //         onSearch(queryResults)
+    //     }
+    // }, [queryResults]);
 
     useEffect(() => {
         if (searchQuery.length === 0) {
@@ -49,10 +50,8 @@ function Header(props) {
 
     useEffect(() => {
         const query = () => {
-            console.log('ds:', debouncedSearch)
             const qs = handleSearchQuery(debouncedSearch)
 
-            console.log('qs:', qs)
             setQueryResults(qs)
             if (!showQueryResults) {
                 setShowQueryResults(true)

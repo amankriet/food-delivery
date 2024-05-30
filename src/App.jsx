@@ -12,17 +12,26 @@ function App() {
 
     useEffect(() => {
         if (restaurantsList.length === 0) {
-            setRestaurantsList(restaurantsMockList)
+            const restaurantsData = fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.3699574&lng=83.0005493&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING\n')
+            restaurantsData
+                .then(resp => resp.json())
+                .then(jResp => {
+                    setRestaurantsList(jResp?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+                })
+                .catch(err => console.log(err));
         }
+
+        console.log('App.jsx')
+
     }, [restaurantsList]);
 
     return (
         <>
             <ErrorBoundary>
-                <TopNavbar />
-                <Header restaurants={restaurantsMockList} onSearch={setRestaurantsList} />
-                <Restaurants restaurants={restaurantsList} />
-                <Footer />
+                <TopNavbar/>
+                <Header restaurants={restaurantsMockList} onSearch={setRestaurantsList}/>
+                <Restaurants restaurants={restaurantsList}/>
+                <Footer/>
             </ErrorBoundary>
         </>
     )
