@@ -25,7 +25,9 @@ function RestaurantCard(props) {
             <ErrorBoundary fallback={<h2>Error while loading restaurant image</h2>}>
                 <div className="restaurant-img">
                     <img src={imgBaseUrl + cloudinaryImageId} alt={name}/>
-                    <h2 className='discount-header'>{`${header} ${subHeader}`}</h2>
+                    {aggregatedDiscountInfoV3 && (
+                        <h2 className='discount-header'>{`${header} ${subHeader}`}</h2>
+                    )}
                 </div>
             </ErrorBoundary>
             <div className="restaurant-data">
