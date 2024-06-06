@@ -237,71 +237,140 @@ main {
         grid-template-columns: repeat(auto-fill, minmax(306px, auto));
         place-items: center;
         padding: 8px;
-    }
 
-    div.card {
-        width: min-content;
-        height: min-content;
-        transform: scale(0.8);
-        transition: transform 0.25s ease-in-out;
+        div.shimmer-card {
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.8);
+            animation: pulse 2s infinite, appear linear;
+            animation-timeline: auto, view();
+            animation-range: entry 0%;
 
-        div.restaurant-img {
-            position: relative;
+            div.shimmer-restaurant-data {
+                margin-right: 12px;
+                margin-top: 8px;
 
-            img {
-                display: block;
-                object-fit: cover;
-                width: 360px;
-                height: 240px;
-                border-radius: 16px;
-            }
+                p.shimmer-restaurant-name {
+                    height: 24px;
+                    border-radius: 4px;
+                    background-color: #eee;
+                }
 
-            h2 {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 8px;
-                margin: 0;
-                text-transform: uppercase;
+                p.shimmer-meta {
+                    height: 24px;
+                    width: 70%;
+                    border-radius: 4px;
+                    background-color: #eee;
+                }
+
+                p.shimmer-cuisines {
+                    height: 20px;
+                    border-radius: 4px;
+                    background-color: #eee;
+                }
+
+                p.shimmer-restaurant-area {
+                    height: 20px;
+                    width:40%;
+                    border-radius:4px;
+                    background-color:#eee;
+                }
             }
         }
 
-        div.restaurant-data {
-            margin-left: 12px;
+        div.card-scroll {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0%;
+        }
 
-            div.main-text {
-                height: auto;
-                font-weight: bold;
+        div.card {
+            width: min-content;
+            height: min-content;
+            transform: scale(0.8);
+            transition: transform 0.25s ease-in-out;
 
-                p {
+            div.restaurant-img {
+                position: relative;
+
+                img {
+                    display: block;
+                    object-fit: cover;
+                    width: 360px;
+                    height: 240px;
+                    border-radius: 16px;
+                }
+
+                h2 {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    padding: 8px;
                     margin: 0;
+                    text-transform: uppercase;
+                }
+            }
 
-                    span.meta-text {
-                        text-transform: lowercase;
+            div.restaurant-data {
+                margin-left: 12px;
+
+                div.main-text {
+                    height: auto;
+                    font-weight: bold;
+
+                    p {
+                        margin: 0;
+
+                        span.meta-text {
+                            text-transform: lowercase;
+                        }
+                    }
+                }
+
+                div.sub-text {
+                    display: grid;
+                    margin-top: 2px;
+                    height: auto;
+                    font-weight: 200;
+                    text-transform: capitalize;
+                    text-wrap: auto;
+
+                    p {
+                        color: var(--color-secondary-dark);
+                        margin: 0;
                     }
                 }
             }
+        }
 
-            div.sub-text {
-                display: grid;
-                margin-top: 2px;
-                height: auto;
-                font-weight: 200;
-                text-transform: capitalize;
-                text-wrap: auto;
-
-                p {
-                    color: var(--color-secondary-dark);
-                    margin: 0;
-                }
-            }
+        div.card:hover {
+            cursor: pointer;
+            transform: scale(0.76);
+            filter: drop-shadow(0 0 8px var(--color-accent));
         }
     }
+}
 
-    div.card:hover {
-        cursor: pointer;
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
         transform: scale(0.76);
-        filter: drop-shadow(0 0 8px var(--color-accent));
+    }
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(0.8);
     }
 }
 
@@ -335,18 +404,6 @@ main {
     }
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.96);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 @media only screen and (min-width: 1600px) {
     main {
         div.grid-container {
@@ -356,17 +413,48 @@ main {
             grid-row-gap: 16px;
         }
 
+        div.shimmer-card {
+            transform: scale(1);
+            animation:pulse 2s infinite;
+        }
+
         div.card {
             width: min-content;
             height: min-content;
             transform: scale(1);
             transition: transform 0.25s ease-in-out;
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0%;
         }
 
         div.card:hover {
             cursor: pointer;
             transform: scale(0.96);
             filter: drop-shadow(0 0 8px var(--color-accent));
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.96);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                scale: 0.5;
+            }
+            to {
+                opacity: 1;
+                scale: 0.8;
+            }
         }
     }
 }

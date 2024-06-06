@@ -6,6 +6,7 @@ import Footer from "./components/Footer.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import {useEffect, useState} from "react";
 import {restaurantsMockList} from "./utils/mockData.js";
+import {  } from 'react-router-dom'
 
 function App() {
     const [restaurantsList, setRestaurantsList] = useState([])
