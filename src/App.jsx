@@ -18,7 +18,11 @@ function App() {
                 .then(jResp => {
                     setRestaurantsList(jResp?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err)
+                    setRestaurantsList(restaurantsMockList)
+                    console.log(restaurantsList)
+                });
         }
 
         console.log('App.jsx')

@@ -18,7 +18,7 @@ class ErrorBoundary extends React.Component {
                 placeItems: "center"
             }}>
                 <h1>Error</h1>
-                <p>{this.state.error.message}</p>
+                <p>{this.state.error.stack}</p>
             </div>
         }
         return this.props.children
