@@ -1,6 +1,5 @@
 import ErrorBoundary from "./ErrorBoundary.jsx"
 import {imgBaseUrl} from "../utils/constants.js"
-import {useRef, useEffect} from 'react'
 
 function RestaurantCard(props) {
     const {
@@ -14,7 +13,6 @@ function RestaurantCard(props) {
         promoted,
         avgRating
     } = props?.restaurant?.info || props.restaurant?.data
-    const resCard = useRef(null)
     
     let header = '', subHeader = ''
     if (props?.restaurant?.info?.aggregatedDiscountInfoV3) {
@@ -27,13 +25,8 @@ function RestaurantCard(props) {
         subHeader = aggregatedDiscountInfo.subHeader
     }
 
-    useEffect(() => {
-        // console.log(ref)
-        resCard.current.classList.add('card-scroll')
-    }, [])
-
     return (
-        <div className="card" ref={resCard}>
+        <div className="card card-scroll">
             <ErrorBoundary fallback={<h2>Error while loading restaurant image</h2>}>
                 <div className="restaurant-img">
                     <img src={imgBaseUrl + cloudinaryImageId} alt={name}/>
