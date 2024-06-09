@@ -18,6 +18,15 @@
   color: rgba(255, 255, 255, 0.87);
 }
 
+html {
+  /*overflow-y: scroll;*/
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   font-weight: 500;
   color: #7ea25a;
@@ -25,13 +34,6 @@ a {
 }
 a:hover {
   color: #709050;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-width: 100vw;
-  min-height: 100vh;
 }
 
 h1 {

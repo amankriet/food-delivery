@@ -50,7 +50,6 @@ div.container {
 }
 
 header {
-    width: 100vw;
     height: max-content;
     display: flex;
     align-items: center;
